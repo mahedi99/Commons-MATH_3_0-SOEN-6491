@@ -933,6 +933,8 @@ public class ArrayRealVectorTest {
         ArrayRealVector v_null = new ArrayRealVector(vec_null);
 
         RealVectorTestImpl v2_t = new RealVectorTestImpl(vec2);
+        
+        testBasicFunctions2(v1, v2);
 
         // emacs calc: [-4, 0, 3, 1, -6, 3] A --> 8.4261497731763586307
         double d_getNorm = v5.getNorm();
@@ -955,10 +957,6 @@ public class ArrayRealVectorTest {
         double dist_2 = v1.getDistance(v2_t);
         Assert.assertEquals("compare values  ", v1.subtract(v2).getNorm(),dist_2, normTolerance);
 
-        //octave =  sqrt(sumsq(v1-v2))
-        double dist_3 = v1.getDistance(v2);
-        Assert.assertEquals("compare values  ", v1.subtract(v2).getNorm(),dist_3, normTolerance);
-
         //octave =  ???
         double d_getL1Distance = v1. getL1Distance(v2);
         Assert.assertEquals("compare values  ", 9d, d_getL1Distance, normTolerance);
@@ -966,18 +964,12 @@ public class ArrayRealVectorTest {
         double d_getL1Distance_2 = v1.getL1Distance(v2_t);
         Assert.assertEquals("compare values  ", 9d, d_getL1Distance_2, normTolerance);
 
-        double d_getL1Distance_3 = v1.getL1Distance(v2);
-        Assert.assertEquals("compare values  ", 9d, d_getL1Distance_3, normTolerance);
-
         //octave =  ???
         double d_getLInfDistance = v1.getLInfDistance(v2);
         Assert.assertEquals("compare values  ", 3d, d_getLInfDistance, normTolerance);
 
         double d_getLInfDistance_2 = v1. getLInfDistance(v2_t);
         Assert.assertEquals("compare values  ", 3d, d_getLInfDistance_2, normTolerance);
-
-        double d_getLInfDistance_3 = v1. getLInfDistance(v2);
-        Assert.assertEquals("compare values  ", 3d, d_getLInfDistance_3, normTolerance);
 
         //octave =  v1 + v2
         ArrayRealVector v_add = v1.add(v2);
@@ -1007,10 +999,6 @@ public class ArrayRealVectorTest {
         double[] result_ebeMultiply_2 = {4d, 10d, 18d};
         assertClose("compare vect" ,v_ebeMultiply_2.toArray(),result_ebeMultiply_2,normTolerance);
 
-        RealVector  v_ebeMultiply_3 = v1.ebeMultiply(v2);
-        double[] result_ebeMultiply_3 = {4d, 10d, 18d};
-        assertClose("compare vect" ,v_ebeMultiply_3.toArray(),result_ebeMultiply_3,normTolerance);
-
         // octave v1 ./ v2
         ArrayRealVector  v_ebeDivide = v1.ebeDivide(v2);
         double[] result_ebeDivide = {0.25d, 0.4d, 0.5d};
@@ -1019,10 +1007,6 @@ public class ArrayRealVectorTest {
         RealVector  v_ebeDivide_2 = v1.ebeDivide(v2_t);
         double[] result_ebeDivide_2 = {0.25d, 0.4d, 0.5d};
         assertClose("compare vect" ,v_ebeDivide_2.toArray(),result_ebeDivide_2,normTolerance);
-
-        RealVector  v_ebeDivide_3 = v1.ebeDivide(v2);
-        double[] result_ebeDivide_3 = {0.25d, 0.4d, 0.5d};
-        assertClose("compare vect" ,v_ebeDivide_3.toArray(),result_ebeDivide_3,normTolerance);
 
         // octave  dot(v1,v2)
         double dot =  v1.dotProduct(v2);
@@ -1037,9 +1021,6 @@ public class ArrayRealVectorTest {
 
         RealMatrix m_outerProduct_2 = v1.outerProduct(v2_t);
         Assert.assertEquals("compare val ",4d, m_outerProduct_2.getEntry(0,0), normTolerance);
-
-        RealMatrix m_outerProduct_3 = v1.outerProduct(v2);
-        Assert.assertEquals("compare val ",4d, m_outerProduct_3.getEntry(0,0), normTolerance);
 
         RealVector v_unitVector = v1.unitVector();
         RealVector v_unitVector_2 = v1.mapDivide(v1.getNorm());
@@ -1070,6 +1051,29 @@ public class ArrayRealVectorTest {
         double[] result_projection_2 = {1.662337662337662, 2.0779220779220777, 2.493506493506493};
         assertClose("compare vect", v_projection_2.toArray(), result_projection_2, normTolerance);
     }
+
+	private void testBasicFunctions2(ArrayRealVector v1, ArrayRealVector v2) {
+		//octave =  sqrt(sumsq(v1-v2))
+        double dist_3 = v1.getDistance(v2);
+        Assert.assertEquals("compare values  ", v1.subtract(v2).getNorm(),dist_3, normTolerance);
+        
+        double d_getL1Distance_3 = v1.getL1Distance(v2);
+        Assert.assertEquals("compare values  ", 9d, d_getL1Distance_3, normTolerance);
+        
+        double d_getLInfDistance_3 = v1. getLInfDistance(v2);
+        Assert.assertEquals("compare values  ", 3d, d_getLInfDistance_3, normTolerance);
+        
+        RealVector  v_ebeMultiply_3 = v1.ebeMultiply(v2);
+        double[] result_ebeMultiply_3 = {4d, 10d, 18d};
+        assertClose("compare vect" ,v_ebeMultiply_3.toArray(),result_ebeMultiply_3,normTolerance);
+        
+        RealVector  v_ebeDivide_3 = v1.ebeDivide(v2);
+        double[] result_ebeDivide_3 = {0.25d, 0.4d, 0.5d};
+        assertClose("compare vect" ,v_ebeDivide_3.toArray(),result_ebeDivide_3,normTolerance);
+        
+        RealMatrix m_outerProduct_3 = v1.outerProduct(v2);
+        Assert.assertEquals("compare val ",4d, m_outerProduct_3.getEntry(0,0), normTolerance);
+	}
 
     @Test
     public void testMisc() {
