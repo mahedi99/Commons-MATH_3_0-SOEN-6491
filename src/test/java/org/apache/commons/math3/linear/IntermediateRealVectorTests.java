@@ -1,5 +1,10 @@
 package org.apache.commons.math3.linear;
 
+/**
+ * Test cases supercalss for the {@link SparseRealVectorTest} class.{@link ArrayRealVectorTest} class.
+ *
+ * @version $Id$
+ */
 public class IntermediateRealVectorTests {
 
 	protected double[] vec1 = {1d, 2d, 3d};

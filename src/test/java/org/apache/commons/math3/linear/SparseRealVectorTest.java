@@ -60,12 +60,8 @@ import org.apache.commons.math3.analysis.function.Power;
 public class SparseRealVectorTest extends IntermediateRealVectorTests {
 
     // moved properties to IntermediateRealVectorTest class as it was type 1 clone
-	// removed ma1
-    protected double[][] ma1 = {{1d, 2d, 3d}, {4d, 5d, 6d}, {7d, 8d, 9d}};
-    protected double[][] mat1 = {{1d, 2d, 3d}, {4d, 5d, 6d},{ 7d, 8d, 9d}};
-
-    // tolerances
-    protected double entryTolerance = 10E-16;
+	
+	
     // Testclass to test the RealVector interface
     // only with enough content to support the test
     public static class SparseRealVectorTestImpl extends RealVector implements Serializable {
