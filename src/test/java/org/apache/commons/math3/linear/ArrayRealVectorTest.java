@@ -1389,6 +1389,6 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
     /** verifies that two vectors are close (sup norm) */
     protected void assertClose(String msg, double[] m, double[] n,
             double tolerance) {
-        assertCloseExtracted(m, n, msg, tolerance);
+    	super.assertCloseExtracted(m, n, msg, tolerance);
     }
 }
