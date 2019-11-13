@@ -1059,7 +1059,7 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
 
     @Test
     public void testMisc() {
-        testMiscExtracted(() -> new ArrayRealVector(vec1));
+    	super.testMiscExtracted(() -> new ArrayRealVector(vec1));
 
     }
     

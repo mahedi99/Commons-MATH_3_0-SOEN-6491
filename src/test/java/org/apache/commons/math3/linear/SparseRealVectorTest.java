@@ -864,7 +864,7 @@ public class SparseRealVectorTest extends IntermediateRealVectorTests {
 
     @Test
     public void testMisc() {
-        testMiscExtracted(() -> new OpenMapRealVector(vec1));
+        super.testMiscExtracted(() -> new OpenMapRealVector(vec1));
 
 
     }
