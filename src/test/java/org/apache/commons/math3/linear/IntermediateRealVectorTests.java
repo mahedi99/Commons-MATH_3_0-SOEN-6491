@@ -24,9 +24,23 @@ public class IntermediateRealVectorTests {
 		super();
 	}
 
+	// method pull up as its type clone 2 resolved
 	protected void testSerialExtracted(Supplier<RealVector> arg0) {
 		RealVector v = arg0.get();
 		Assert.assertEquals(v, TestUtils.serializeAndRecover(v));
+	}
+
+	protected void testOuterProductExtracted(Supplier<RealVector> arg0, Supplier<RealVector> arg1) {
+		final RealVector u = arg0.get();
+		final RealVector v = arg1.get();
+		final RealMatrix uv = u.outerProduct(v);
+		final double tol = Math.ulp(1d);
+		Assert.assertEquals(4, uv.getEntry(0, 0), tol);
+		Assert.assertEquals(-2, uv.getEntry(0, 1), tol);
+		Assert.assertEquals(8, uv.getEntry(1, 0), tol);
+		Assert.assertEquals(-4, uv.getEntry(1, 1), tol);
+		Assert.assertEquals(-12, uv.getEntry(2, 0), tol);
+		Assert.assertEquals(6, uv.getEntry(2, 1), tol);
 	}
 
 }
