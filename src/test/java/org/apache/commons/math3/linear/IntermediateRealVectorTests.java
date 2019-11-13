@@ -55,4 +55,14 @@ public class IntermediateRealVectorTests {
 		}
 	}
 
+	protected void assertCloseExtracted(double[] m, double[] n, String msg, double tolerance) {
+		if (m.length != n.length) {
+			Assert.fail("vectors have different lengths");
+		}
+		for (int i = 0; i < m.length; i++) {
+			Assert.assertEquals(msg + " " + i + " elements differ", m[i], n[i], tolerance);
+		}
+		return;
+	}
+
 }

@@ -1389,11 +1389,6 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
     /** verifies that two vectors are close (sup norm) */
     protected void assertClose(String msg, double[] m, double[] n,
             double tolerance) {
-        if (m.length != n.length) {
-            Assert.fail("vectors have different lengths");
-        }
-        for (int i = 0; i < m.length; i++) {
-            Assert.assertEquals(msg + " " +  i + " elements differ", m[i],n[i],tolerance);
-        }
+        assertCloseExtracted(m, n, msg, tolerance);
     }
 }
