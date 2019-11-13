@@ -2,6 +2,7 @@ package org.apache.commons.math3.linear;
 
 import java.util.function.Supplier;
 import org.apache.commons.math3.TestUtils;
+import org.apache.commons.math3.exception.MathIllegalArgumentException;
 import org.junit.Assert;
 
 /**
@@ -41,6 +42,17 @@ public class IntermediateRealVectorTests {
 		Assert.assertEquals(-4, uv.getEntry(1, 1), tol);
 		Assert.assertEquals(-12, uv.getEntry(2, 0), tol);
 		Assert.assertEquals(6, uv.getEntry(2, 1), tol);
+	}
+
+	protected void testMiscExtracted(Supplier<RealVector> arg0) {
+		RealVector v1 = arg0.get();
+		String out1 = v1.toString();
+		Assert.assertTrue("some output ", out1.length() != 0);
+		try {
+			v1.checkVectorDimensions(2);
+			Assert.fail("MathIllegalArgumentException expected");
+		} catch (MathIllegalArgumentException ex) {
+		}
 	}
 
 }

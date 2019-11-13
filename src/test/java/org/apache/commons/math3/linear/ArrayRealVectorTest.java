@@ -1059,21 +1059,7 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
 
     @Test
     public void testMisc() {
-        ArrayRealVector v1 = new ArrayRealVector(vec1);
-
-        String out1 = v1.toString();
-        Assert.assertTrue("some output ",  out1.length()!=0);
-        /*
-         double[] dout1 = v1.copyOut();
-        Assert.assertEquals("testData len", 3, dout1.length);
-        Assert.assertNotSame("testData not same object ", v1.getDataRef(), dout1);
-         */
-        try {
-            v1.checkVectorDimensions(2);
-            Assert.fail("MathIllegalArgumentException expected");
-        } catch (MathIllegalArgumentException ex) {
-            // expected behavior
-        }
+        testMiscExtracted(() -> new ArrayRealVector(vec1));
 
     }
     

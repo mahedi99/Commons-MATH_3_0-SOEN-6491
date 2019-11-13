@@ -864,16 +864,7 @@ public class SparseRealVectorTest extends IntermediateRealVectorTests {
 
     @Test
     public void testMisc() {
-        OpenMapRealVector v1 = new OpenMapRealVector(vec1);
-
-        String out1 = v1.toString();
-        Assert.assertTrue("some output ",  out1.length()!=0);
-        try {
-            v1.checkVectorDimensions(2);
-            Assert.fail("MathIllegalArgumentException expected");
-        } catch (MathIllegalArgumentException ex) {
-            // expected behavior
-        }
+        testMiscExtracted(() -> new OpenMapRealVector(vec1));
 
 
     }
