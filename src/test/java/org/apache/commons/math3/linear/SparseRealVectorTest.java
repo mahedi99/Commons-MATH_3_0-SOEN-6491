@@ -859,7 +859,7 @@ public class SparseRealVectorTest extends IntermediateRealVectorTests {
     @Test
     public void testOuterProduct() {
         super.testOuterProductExtracted(() -> new OpenMapRealVector(new double[] { 1, 2, -3 }),
-				() -> new OpenMapRealVector(new double[] { 4, -2 }));
+				() -> new OpenMapRealVector(new double[] { 4, -2 })); // passing a specific type of object
     }
 
     @Test

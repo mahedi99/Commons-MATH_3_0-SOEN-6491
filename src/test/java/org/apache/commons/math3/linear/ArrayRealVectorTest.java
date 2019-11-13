@@ -1060,8 +1060,6 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
     @Test
     public void testMisc() {
         ArrayRealVector v1 = new ArrayRealVector(vec1);
-        ArrayRealVector v4 = new ArrayRealVector(vec4);
-        RealVector v4_2 = new ArrayRealVector(vec4);
 
         String out1 = v1.toString();
         Assert.assertTrue("some output ",  out1.length()!=0);
@@ -1077,6 +1075,14 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
             // expected behavior
         }
 
+    }
+    
+    // this is a seperate testcase for the vector4th an extention to testMisc
+    @Test
+	public void testMisc_vector4(ArrayRealVector v1) {
+		ArrayRealVector v4 = new ArrayRealVector(vec4);
+        ArrayRealVector v4_2 = new ArrayRealVector(vec4); 
+        
        try {
             v1.checkVectorDimensions(v4);
             Assert.fail("MathIllegalArgumentException expected");
@@ -1090,8 +1096,7 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
         } catch (MathIllegalArgumentException ex) {
             // expected behavior
         }
-
-    }
+	}
 
     @Test
     public void testPredicates() {
