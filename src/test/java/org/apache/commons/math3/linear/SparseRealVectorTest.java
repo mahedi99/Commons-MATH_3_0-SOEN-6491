@@ -912,8 +912,7 @@ public class SparseRealVectorTest extends IntermediateRealVectorTests {
 
     @Test
     public void testSerial()  {
-        OpenMapRealVector v = new OpenMapRealVector(new double[] { 0, 1, 2 });
-        Assert.assertEquals(v,TestUtils.serializeAndRecover(v));
+        super.testSerialExtracted(()->new OpenMapRealVector(new double[]{0,1,2}));
     }
 
     /** verifies that two vectors are close (sup norm) */

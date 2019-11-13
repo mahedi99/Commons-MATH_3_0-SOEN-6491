@@ -1,5 +1,9 @@
 package org.apache.commons.math3.linear;
 
+import java.util.function.Supplier;
+import org.apache.commons.math3.TestUtils;
+import org.junit.Assert;
+
 /**
  * Test cases supercalss for the {@link SparseRealVectorTest} class.{@link ArrayRealVectorTest} class.
  *
@@ -18,6 +22,11 @@ public class IntermediateRealVectorTests {
 
 	public IntermediateRealVectorTests() {
 		super();
+	}
+
+	protected void testSerialExtracted(Supplier<RealVector> arg0) {
+		RealVector v = arg0.get();
+		Assert.assertEquals(v, TestUtils.serializeAndRecover(v));
 	}
 
 }

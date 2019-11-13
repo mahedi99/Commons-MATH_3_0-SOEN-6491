@@ -1132,8 +1132,7 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
 
     @Test
     public void testSerial()  {
-        ArrayRealVector v = new ArrayRealVector(new double[] { 0, 1, 2 });
-        Assert.assertEquals(v,TestUtils.serializeAndRecover(v));
+        super.testSerialExtracted(()->new ArrayRealVector(new double[]{0,1,2}));
     }
 
     @Test
