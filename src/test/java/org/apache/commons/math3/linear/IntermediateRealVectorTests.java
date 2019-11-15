@@ -3,6 +3,7 @@ package org.apache.commons.math3.linear;
 import java.util.function.Supplier;
 import org.apache.commons.math3.TestUtils;
 import org.apache.commons.math3.exception.MathIllegalArgumentException;
+import org.apache.commons.math3.util.FastMath;
 import org.junit.Assert;
 
 /**
@@ -63,6 +64,23 @@ public class IntermediateRealVectorTests {
 			Assert.assertEquals(msg + " " + i + " elements differ", m[i], n[i], tolerance);
 		}
 		return;
+	}
+
+	protected void testPredicatesExtracted(Supplier<RealVector> arg0, RealVector arg1, RealVector arg2,
+			RealVector arg3) {
+		RealVector v = arg0.get();
+		Assert.assertFalse(v.isNaN());
+		v.setEntry(1, Double.NaN);
+		Assert.assertTrue(v.isNaN());
+		Assert.assertFalse(v.isInfinite());
+		v.setEntry(0, Double.POSITIVE_INFINITY);
+		Assert.assertFalse(v.isInfinite());
+		v.setEntry(1, 1);
+		Assert.assertTrue(v.isInfinite());
+		v.setEntry(0, 0);
+		Assert.assertEquals(v, arg1);
+		Assert.assertNotSame(v, arg2);
+		Assert.assertNotSame(v, arg3);
 	}
 
 }

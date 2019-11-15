@@ -60,8 +60,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
-
-
+	
     // Testclass to test the RealVector interface
     // only with enough content to support the test
     public static class RealVectorTestImpl extends RealVector
@@ -585,7 +584,7 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
 
     @Test
     public void testMapFunctions() {
-        ArrayRealVector v1 = new ArrayRealVector(vec1);
+    	ArrayRealVector v1 = new ArrayRealVector(vec1);
 
         //octave =  v1 .+ 2.0
         RealVector v_mapAdd = v1.mapAdd(2.0d);
@@ -1087,26 +1086,20 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
     @Test
     public void testPredicates() {
 
-        ArrayRealVector v = new ArrayRealVector(new double[] { 0, 1, 2 });
+    	super.testPredicatesExtracted(() -> new ArrayRealVector(new double[] { 0, 1, 2 }),
+				new ArrayRealVector(new double[] { 0, 1, 2 }),
+				new ArrayRealVector(new double[] { 0, 1, 2 + FastMath.ulp(2) }),
+				new ArrayRealVector(new double[] { 0, 1, 2, 3 }));
 
-        Assert.assertFalse(v.isNaN());
-        v.setEntry(1, Double.NaN);
-        Assert.assertTrue(v.isNaN());
+    }
 
-        Assert.assertFalse(v.isInfinite());
-        v.setEntry(0, Double.POSITIVE_INFINITY);
-        Assert.assertFalse(v.isInfinite());
-        v.setEntry(1, 1);
-        Assert.assertTrue(v.isInfinite());
-        v.setEntry(0, 1);
-        Assert.assertFalse(v.isInfinite());
+    @Test
+	public void testPredicates_HashCode(ArrayRealVector v) {
+		
+		v.setEntry(0, 1);
+	        Assert.assertFalse(v.isInfinite());
 
-        v.setEntry(0, 0);
-        Assert.assertEquals(v, new ArrayRealVector(new double[] { 0, 1, 2 }));
-        Assert.assertNotSame(v, new ArrayRealVector(new double[] { 0, 1, 2 + FastMath.ulp(2)}));
-        Assert.assertNotSame(v, new ArrayRealVector(new double[] { 0, 1, 2, 3 }));
-
-        Assert.assertEquals(new ArrayRealVector(new double[] { Double.NaN, 1, 2 }).hashCode(),
+		Assert.assertEquals(new ArrayRealVector(new double[] { Double.NaN, 1, 2 }).hashCode(),
                      new ArrayRealVector(new double[] { 0, Double.NaN, 2 }).hashCode());
 
         Assert.assertTrue(new ArrayRealVector(new double[] { Double.NaN, 1, 2 }).hashCode() !=
@@ -1118,8 +1111,7 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
         Assert.assertFalse(v.equals(v.getDataRef()));
         Assert.assertFalse(v.equals(v.getSubVector(0, v.getDimension() - 1)));
         Assert.assertTrue(v.equals(v.getSubVector(0, v.getDimension())));
-
-    }
+	}
 
     @Test
     public void testSerial()  {
