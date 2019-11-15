@@ -1,6 +1,8 @@
 package org.apache.commons.math3.linear;
 
+import org.apache.commons.math3.TestUtils;
 import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * @author Mahedi Hassan
@@ -24,6 +26,9 @@ public class IntermediateVectorTest {
     protected double normTolerance = 10E-14;
 
 
+    public void testSerial(RealVector v)  {
+        Assert.assertEquals(v,TestUtils.serializeAndRecover(v));
+    }
 
     /** verifies that two vectors are close (sup norm) */
     protected void assertClose(String msg, double[] m, double[] n,

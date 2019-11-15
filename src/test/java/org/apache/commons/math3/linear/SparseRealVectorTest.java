@@ -910,7 +910,7 @@ public class SparseRealVectorTest extends IntermediateVectorTest{
     @Test
     public void testSerial()  {
         OpenMapRealVector v = new OpenMapRealVector(new double[] { 0, 1, 2 });
-        Assert.assertEquals(v,TestUtils.serializeAndRecover(v));
+        super.testSerial(v);
     }
 
     /* Check that the operations do not throw an exception (cf. MATH-645). */
