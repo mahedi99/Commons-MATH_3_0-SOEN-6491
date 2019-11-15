@@ -913,17 +913,6 @@ public class SparseRealVectorTest extends IntermediateVectorTest{
         Assert.assertEquals(v,TestUtils.serializeAndRecover(v));
     }
 
-    /** verifies that two vectors are close (sup norm) */
-    protected void assertClose(String msg, double[] m, double[] n,
-                               double tolerance) {
-        if (m.length != n.length) {
-            Assert.fail("vectors have different lengths");
-        }
-        for (int i = 0; i < m.length; i++) {
-            Assert.assertEquals(msg + " " +  i + " elements differ", m[i],n[i],tolerance);
-        }
-    }
-
     /* Check that the operations do not throw an exception (cf. MATH-645). */
     @Test
     public void testConcurrentModification() {

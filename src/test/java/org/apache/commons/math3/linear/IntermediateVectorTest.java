@@ -1,5 +1,7 @@
 package org.apache.commons.math3.linear;
 
+import org.junit.Assert;
+
 /**
  * @author Mahedi Hassan
  * 2019-11-15
@@ -20,4 +22,18 @@ public class IntermediateVectorTest {
     // tolerances
     protected double entryTolerance = 10E-16;
     protected double normTolerance = 10E-14;
+
+
+
+    /** verifies that two vectors are close (sup norm) */
+    protected void assertClose(String msg, double[] m, double[] n,
+                               double tolerance) {
+        if (m.length != n.length) {
+            Assert.fail("vectors have different lengths");
+        }
+        for (int i = 0; i < m.length; i++) {
+            Assert.assertEquals(msg + " " +  i + " elements differ", m[i],n[i],tolerance);
+        }
+    }
+
 }

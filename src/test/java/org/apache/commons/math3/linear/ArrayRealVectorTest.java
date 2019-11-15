@@ -918,7 +918,7 @@ public class ArrayRealVectorTest extends IntermediateVectorTest {
         ArrayRealVector v_null = new ArrayRealVector(vec_null);
 
         RealVectorTestImpl v2_t = new RealVectorTestImpl(vec2);
-        
+
         testBasicFunctions2(v1, v2);
 
         // emacs calc: [-4, 0, 3, 1, -6, 3] A --> 8.4261497731763586307
@@ -1406,17 +1406,6 @@ public class ArrayRealVectorTest extends IntermediateVectorTest {
         }
         for (int i = 0; i < x.getDimension(); i++) {
             Assert.assertEquals(v[i] + inc, x.getEntry(i), 0);
-        }
-    }
-
-    /** verifies that two vectors are close (sup norm) */
-    protected void assertClose(String msg, double[] m, double[] n,
-            double tolerance) {
-        if (m.length != n.length) {
-            Assert.fail("vectors have different lengths");
-        }
-        for (int i = 0; i < m.length; i++) {
-            Assert.assertEquals(msg + " " +  i + " elements differ", m[i],n[i],tolerance);
         }
     }
 }
