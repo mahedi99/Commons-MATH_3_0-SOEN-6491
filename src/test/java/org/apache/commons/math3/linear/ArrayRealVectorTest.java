@@ -59,22 +59,7 @@ import org.junit.Test;
  *
  * @version $Id$
  */
-public class ArrayRealVectorTest {
-
-    //
-    protected double[][] ma1 = {{1d, 2d, 3d}, {4d, 5d, 6d}, {7d, 8d, 9d}};
-    protected double[] vec1 = {1d, 2d, 3d};
-    protected double[] vec2 = {4d, 5d, 6d};
-    protected double[] vec3 = {7d, 8d, 9d};
-    protected double[] vec4 = {1d, 2d, 3d, 4d, 5d, 6d, 7d, 8d, 9d};
-    protected double[] vec5 = { -4d, 0d, 3d, 1d, -6d, 3d};
-    protected double[] vec_null = {0d, 0d, 0d};
-    protected Double[] dvec1 = {1d, 2d, 3d, 4d, 5d, 6d, 7d, 8d, 9d};
-    protected double[][] mat1 = {{1d, 2d, 3d}, {4d, 5d, 6d},{ 7d, 8d, 9d}};
-
-    // tolerances
-    protected double entryTolerance = 10E-16;
-    protected double normTolerance = 10E-14;
+public class ArrayRealVectorTest extends IntermediateVectorTest {
 
     // Testclass to test the RealVector interface
     // only with enough content to support the test
