@@ -2,6 +2,7 @@ package org.apache.commons.math3.linear;
 
 import org.apache.commons.math3.TestUtils;
 import org.apache.commons.math3.exception.MathArithmeticException;
+import org.apache.commons.math3.util.FastMath;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -134,6 +135,23 @@ public class IntermediateVectorTest {
         Assert.assertEquals(-4, uv.getEntry(1, 1), tol);
         Assert.assertEquals(-12, uv.getEntry(2, 0), tol);
         Assert.assertEquals(6, uv.getEntry(2, 1), tol);
+    }
+
+    public void testPredicates(RealVector v) {
+
+        double[] dataSet1 = new double[]{0, 1, 2};
+        double[] dataSet2 = new double[]{0, 1, 2 + FastMath.ulp(2)};
+        double[] dateSet3 = new double[]{0, 1, 2, 3};
+
+        Assert.assertFalse(v.isNaN());
+        v.setEntry(1, Double.NaN);
+        Assert.assertTrue(v.isNaN());
+
+        Assert.assertFalse(v.isInfinite());
+        v.setEntry(0, Double.POSITIVE_INFINITY);
+        Assert.assertFalse(v.isInfinite()); // NaN has higher priority than infinity
+        v.setEntry(1, 1);
+        Assert.assertTrue(v.isInfinite());
     }
 
     /** verifies that two vectors are close (sup norm) */

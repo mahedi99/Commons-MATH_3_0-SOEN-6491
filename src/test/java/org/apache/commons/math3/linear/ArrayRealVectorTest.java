@@ -1015,15 +1015,9 @@ public class ArrayRealVectorTest extends IntermediateVectorTest {
 
         ArrayRealVector v = new ArrayRealVector(new double[] { 0, 1, 2 });
 
-        Assert.assertFalse(v.isNaN());
-        v.setEntry(1, Double.NaN);
-        Assert.assertTrue(v.isNaN());
+        //Calling method in the parent class for common statements
+        super.testPredicates(v);
 
-        Assert.assertFalse(v.isInfinite());
-        v.setEntry(0, Double.POSITIVE_INFINITY);
-        Assert.assertFalse(v.isInfinite());
-        v.setEntry(1, 1);
-        Assert.assertTrue(v.isInfinite());
         v.setEntry(0, 1);
         Assert.assertFalse(v.isInfinite());
 

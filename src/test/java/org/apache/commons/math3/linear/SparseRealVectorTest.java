@@ -815,15 +815,7 @@ public class SparseRealVectorTest extends IntermediateVectorTest{
 
         OpenMapRealVector v = new OpenMapRealVector(new double[] { 0, 1, 2 });
 
-        Assert.assertFalse(v.isNaN());
-        v.setEntry(1, Double.NaN);
-        Assert.assertTrue(v.isNaN());
-
-        Assert.assertFalse(v.isInfinite());
-        v.setEntry(0, Double.POSITIVE_INFINITY);
-        Assert.assertFalse(v.isInfinite()); // NaN has higher priority than infinity
-        v.setEntry(1, 1);
-        Assert.assertTrue(v.isInfinite());
+        super.testPredicates(v);
 
         v.setEntry(0, 0);
         Assert.assertEquals(v, new OpenMapRealVector(new double[] { 0, 1, 2 }));
