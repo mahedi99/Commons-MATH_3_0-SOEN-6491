@@ -17,6 +17,7 @@
 package org.apache.commons.math3.linear;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -583,10 +584,29 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
     }
 
     @Test
-    public void testMapFunctions() {
-    	ArrayRealVector v1 = new ArrayRealVector(vec1);
-
-        //octave =  v1 .+ 2.0
+    public void testMapFunctions() {    
+   
+    // the setup arrays needed for intermediate class
+	 double[] vat_a = {0d, 0.5d, 1.0d};
+	 double[] abs_a = {-1.0d, 0.0d, 1.0d};
+	 double[] cbrt_a = {-2.0d, 0.0d, 2.0d};
+	 double[] ceil_a = {-1.1d, 0.9d, 1.1d};
+	 
+    ArrayList<RealVector> arrayRealVector = new ArrayList<RealVector>();
+    
+    arrayRealVector.add(new ArrayRealVector(vec1)); // v1   0
+    arrayRealVector.add(new ArrayRealVector(vat_a)); //vat  1
+    arrayRealVector.add(new ArrayRealVector(abs_a)); //abs_v 2 
+    arrayRealVector.add(new ArrayRealVector(cbrt_a)); //cbrt_v  3
+    arrayRealVector.add(new ArrayRealVector(ceil_a)); // ceil_v   4
+    
+    RealVector v1 =arrayRealVector.get(0); // preserving behaviour same variable names
+    RealVector vat = arrayRealVector.get(1);
+    RealVector abs_v = arrayRealVector.get(2);
+    RealVector cbrt_v = arrayRealVector.get(3);
+    RealVector ceil_v = arrayRealVector.get(4);
+    
+    //octave =  v1 .+ 2.0
         RealVector v_mapAdd = v1.mapAdd(2.0d);
         double[] result_mapAdd = {3d, 4d, 5d};
         assertClose("compare vectors" ,result_mapAdd,v_mapAdd.toArray(),normTolerance);
@@ -651,7 +671,6 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
         v_mapExpToSelf.mapToSelf(new Exp());
         double[] result_mapExpToSelf = {2.718281828459045e+00d,7.389056098930650e+00d, 2.008553692318767e+01d};
         assertClose("compare vectors" ,result_mapExpToSelf,v_mapExpToSelf.toArray(),normTolerance);
-
 
         //octave =  ???
         RealVector v_mapExpm1 = v1.map(new Expm1());
@@ -763,9 +782,6 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
         double[] result_mapTanToSelf = {1.557407724654902e+00d,-2.185039863261519e+00d,-1.425465430742778e-01d};
         assertClose("compare vectors" ,result_mapTanToSelf,v_mapTanToSelf.toArray(),normTolerance);
 
-        double[] vat_a = {0d, 0.5d, 1.0d};
-        ArrayRealVector vat = new ArrayRealVector(vat_a);
-
         //octave =  acos(vat)
         RealVector v_mapAcos = vat.map(new Acos());
         double[] result_mapAcos = {1.570796326794897e+00d,1.047197551196598e+00d, 0.0d};
@@ -810,8 +826,6 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
         double[] result_mapInvToSelf = {1d,0.5d,3.333333333333333e-01d};
         assertClose("compare vectors" ,result_mapInvToSelf,v_mapInvToSelf.toArray(),normTolerance);
 
-        double[] abs_a = {-1.0d, 0.0d, 1.0d};
-        ArrayRealVector abs_v = new ArrayRealVector(abs_a);
 
         //octave =  abs(abs_v)
         RealVector v_mapAbs = abs_v.map(new Abs());
@@ -835,9 +849,6 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
         double[] result_mapSqrtToSelf = {1d,1.414213562373095e+00d,1.732050807568877e+00d};
         assertClose("compare vectors" ,result_mapSqrtToSelf,v_mapSqrtToSelf.toArray(),normTolerance);
 
-        double[] cbrt_a = {-2.0d, 0.0d, 2.0d};
-        ArrayRealVector cbrt_v = new ArrayRealVector(cbrt_a);
-
         //octave =  ???
         RealVector v_mapCbrt = cbrt_v.map(new Cbrt());
         double[] result_mapCbrt = {-1.2599210498948732d,0d,1.2599210498948732d};
@@ -848,9 +859,6 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
         v_mapCbrtToSelf.mapToSelf(new Cbrt());
         double[] result_mapCbrtToSelf =  {-1.2599210498948732d,0d,1.2599210498948732d};
         assertClose("compare vectors" ,result_mapCbrtToSelf,v_mapCbrtToSelf.toArray(),normTolerance);
-
-        double[] ceil_a = {-1.1d, 0.9d, 1.1d};
-        ArrayRealVector ceil_v = new ArrayRealVector(ceil_a);
 
         //octave =  ceil(ceil_v)
         RealVector v_mapCeil = ceil_v.map(new Ceil());

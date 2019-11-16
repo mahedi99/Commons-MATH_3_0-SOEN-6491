@@ -17,6 +17,7 @@
 package org.apache.commons.math3.linear;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import org.junit.Assert;
 import org.junit.Test;
@@ -405,8 +406,29 @@ public class SparseRealVectorTest extends IntermediateRealVectorTests {
 
     @Test
     public void testMapFunctions() {
-        OpenMapRealVector v1 = new OpenMapRealVector(vec1);
-
+  
+        
+        
+        // the setup arrays needed for intermediate class
+   	 double[] vat_a = {0d, 0.5d, 1.0d};
+   	 double[] abs_a = {-1.0d, 0.0d, 1.0d};
+   	 double[] cbrt_a = {-2.0d, 0.0d, 2.0d};
+   	 double[] ceil_a = {-1.1d, 0.9d, 1.1d};
+   	 
+       ArrayList<OpenMapRealVector> openMapRealVector = new ArrayList<OpenMapRealVector>();
+       
+       openMapRealVector.add(new OpenMapRealVector(vec1)); // v1   0
+       openMapRealVector.add(new OpenMapRealVector(vat_a)); //vat  1
+       openMapRealVector.add(new OpenMapRealVector(abs_a)); //abs_v 2 
+       openMapRealVector.add(new OpenMapRealVector(cbrt_a)); //cbrt_v  3
+       openMapRealVector.add(new OpenMapRealVector(ceil_a)); // ceil_v   4
+       
+       RealVector v1 =openMapRealVector.get(0); // preserving behaviour same variable names
+       RealVector vat = openMapRealVector.get(1);
+       RealVector abs_v = openMapRealVector.get(2);
+       RealVector cbrt_v = openMapRealVector.get(3);
+       RealVector ceil_v = openMapRealVector.get(4);
+       
         //octave =  v1 .+ 2.0
         RealVector v_mapAdd = v1.mapAdd(2.0d);
         double[] result_mapAdd = {3d, 4d, 5d};
@@ -584,9 +606,6 @@ public class SparseRealVectorTest extends IntermediateRealVectorTests {
         double[] result_mapTanToSelf = {1.557407724654902e+00d,-2.185039863261519e+00d,-1.425465430742778e-01d};
         assertClose("compare vectors" ,result_mapTanToSelf,v_mapTanToSelf.toArray(),normTolerance);
 
-        double[] vat_a = {0d, 0.5d, 1.0d};
-        OpenMapRealVector vat = new OpenMapRealVector(vat_a);
-
         //octave =  acos(vat)
         RealVector v_mapAcos = vat.map(new Acos());
         double[] result_mapAcos = {1.570796326794897e+00d,1.047197551196598e+00d, 0.0d};
@@ -631,9 +650,6 @@ public class SparseRealVectorTest extends IntermediateRealVectorTests {
         double[] result_mapInvToSelf = {1d,0.5d,3.333333333333333e-01d};
         assertClose("compare vectors" ,result_mapInvToSelf,v_mapInvToSelf.toArray(),normTolerance);
 
-        double[] abs_a = {-1.0d, 0.0d, 1.0d};
-        OpenMapRealVector abs_v = new OpenMapRealVector(abs_a);
-
         //octave =  abs(abs_v)
         RealVector v_mapAbs = abs_v.map(new Abs());
         double[] result_mapAbs = {1d,0d,1d};
@@ -656,8 +672,6 @@ public class SparseRealVectorTest extends IntermediateRealVectorTests {
         double[] result_mapSqrtToSelf = {1d,1.414213562373095e+00d,1.732050807568877e+00d};
         assertClose("compare vectors" ,result_mapSqrtToSelf,v_mapSqrtToSelf.toArray(),normTolerance);
 
-        double[] cbrt_a = {-2.0d, 0.0d, 2.0d};
-        OpenMapRealVector cbrt_v = new OpenMapRealVector(cbrt_a);
 
         //octave =  ???
         RealVector v_mapCbrt = cbrt_v.map(new Cbrt());
@@ -669,9 +683,6 @@ public class SparseRealVectorTest extends IntermediateRealVectorTests {
         v_mapCbrtToSelf.mapToSelf(new Cbrt());
         double[] result_mapCbrtToSelf =  {-1.2599210498948732d,0d,1.2599210498948732d};
         assertClose("compare vectors" ,result_mapCbrtToSelf,v_mapCbrtToSelf.toArray(),normTolerance);
-
-        double[] ceil_a = {-1.1d, 0.9d, 1.1d};
-        OpenMapRealVector ceil_v = new OpenMapRealVector(ceil_a);
 
         //octave =  ceil(ceil_v)
         RealVector v_mapCeil = ceil_v.map(new Ceil());
