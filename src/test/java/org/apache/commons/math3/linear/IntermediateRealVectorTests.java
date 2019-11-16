@@ -27,7 +27,9 @@ import org.apache.commons.math3.analysis.function.Sqrt;
 import org.apache.commons.math3.analysis.function.Tan;
 import org.apache.commons.math3.analysis.function.Tanh;
 import org.apache.commons.math3.analysis.function.Ulp;
+import org.apache.commons.math3.exception.MathArithmeticException;
 import org.apache.commons.math3.exception.MathIllegalArgumentException;
+import org.apache.commons.math3.linear.ArrayRealVectorTest.RealVectorTestImpl;
 import org.apache.commons.math3.util.FastMath;
 import org.junit.Assert;
 
@@ -431,4 +433,87 @@ public class IntermediateRealVectorTests {
 		
 	}
 
-}
+
+	protected void testBasicFunctionsExtracted(ArrayList<RealVector> vector, Supplier<RealVector> arg4) {
+		
+		RealVector v1 = vector.get(0);
+		RealVector v2 = vector.get(1);
+		RealVector v5 = vector.get(2);
+		RealVector v_null = vector.get(3);
+		RealVector v2_t = arg4.get();
+		
+		double d_getNorm = v5.getNorm();
+		Assert.assertEquals("compare values  ", 8.4261497731763586307, d_getNorm, normTolerance);
+		double d_getL1Norm = v5.getL1Norm();
+		Assert.assertEquals("compare values  ", 17.0, d_getL1Norm, normTolerance);
+		double d_getLInfNorm = v5.getLInfNorm();
+		Assert.assertEquals("compare values  ", 6.0, d_getLInfNorm, normTolerance);
+		double dist = v1.getDistance(v2);
+		Assert.assertEquals("compare values  ", v1.subtract(v2).getNorm(), dist, normTolerance);
+		double dist_2 = v1.getDistance(v2_t);
+		Assert.assertEquals("compare values  ", v1.subtract(v2).getNorm(), dist_2, normTolerance);
+		double d_getL1Distance = v1.getL1Distance(v2);
+		Assert.assertEquals("compare values  ", 9d, d_getL1Distance, normTolerance);
+		double d_getL1Distance_2 = v1.getL1Distance(v2_t);
+		Assert.assertEquals("compare values  ", 9d, d_getL1Distance_2, normTolerance);
+		double d_getLInfDistance = v1.getLInfDistance(v2);
+		Assert.assertEquals("compare values  ", 3d, d_getLInfDistance, normTolerance);
+		double d_getLInfDistance_2 = v1.getLInfDistance(v2_t);
+		Assert.assertEquals("compare values  ", 3d, d_getLInfDistance_2, normTolerance);
+		RealVector v_add = v1.add(v2);
+		double[] result_add = { 5d, 7d, 9d };
+		assertCloseExtracted("compare vect", v_add.toArray(), result_add, normTolerance);
+		RealVector vt2 = arg4.get();
+		RealVector v_add_i = v1.add(vt2);
+		double[] result_add_i = { 5d, 7d, 9d };
+		assertCloseExtracted("compare vect", v_add_i.toArray(), result_add_i, normTolerance);
+		RealVector v_subtract = v1.subtract(v2);
+		double[] result_subtract = { -3d, -3d, -3d };
+		assertCloseExtracted("compare vect", v_subtract.toArray(), result_subtract, normTolerance);
+		RealVector v_subtract_i = v1.subtract(vt2);
+		double[] result_subtract_i = { -3d, -3d, -3d };
+		assertCloseExtracted("compare vect", v_subtract_i.toArray(), result_subtract_i, normTolerance);
+		RealVector v_ebeMultiply = v1.ebeMultiply(v2);
+		double[] result_ebeMultiply = { 4d, 10d, 18d };
+		assertCloseExtracted("compare vect", v_ebeMultiply.toArray(), result_ebeMultiply, normTolerance);
+		RealVector v_ebeMultiply_2 = v1.ebeMultiply(v2_t);
+		double[] result_ebeMultiply_2 = { 4d, 10d, 18d };
+		assertCloseExtracted("compare vect", v_ebeMultiply_2.toArray(), result_ebeMultiply_2, normTolerance);
+		RealVector v_ebeDivide = v1.ebeDivide(v2);
+		double[] result_ebeDivide = { 0.25d, 0.4d, 0.5d };
+		assertCloseExtracted("compare vect", v_ebeDivide.toArray(), result_ebeDivide, normTolerance);
+		RealVector v_ebeDivide_2 = v1.ebeDivide(v2_t);
+		double[] result_ebeDivide_2 = { 0.25d, 0.4d, 0.5d };
+		assertCloseExtracted("compare vect", v_ebeDivide_2.toArray(), result_ebeDivide_2, normTolerance);
+		double dot = v1.dotProduct(v2);
+		Assert.assertEquals("compare val ", 32d, dot, normTolerance);
+		double dot_2 = v1.dotProduct(v2_t);
+		Assert.assertEquals("compare val ", 32d, dot_2, normTolerance);
+		RealMatrix m_outerProduct = v1.outerProduct(v2);
+		Assert.assertEquals("compare val ", 4d, m_outerProduct.getEntry(0, 0), normTolerance);
+		RealMatrix m_outerProduct_2 = v1.outerProduct(v2_t);
+		Assert.assertEquals("compare val ", 4d, m_outerProduct_2.getEntry(0, 0), normTolerance);
+		RealVector v_unitVector = v1.unitVector();
+		RealVector v_unitVector_2 = v1.mapDivide(v1.getNorm());
+		assertCloseExtracted("compare vect", v_unitVector.toArray(), v_unitVector_2.toArray(), normTolerance);
+		try {
+			v_null.unitVector();
+			Assert.fail("Expecting MathArithmeticException");
+		} catch (MathArithmeticException ex) {
+		}
+		RealVector v_unitize = v1.copy();
+		v_unitize.unitize();
+		assertCloseExtracted("compare vect", v_unitVector_2.toArray(), v_unitize.toArray(), normTolerance);
+		try {
+			v_null.unitize();
+			Assert.fail("Expecting MathArithmeticException");
+		} catch (MathArithmeticException ex) {
+		}
+		RealVector v_projection = v1.projection(v2);
+		double[] result_projection = { 1.662337662337662, 2.0779220779220777, 2.493506493506493 };
+		assertCloseExtracted("compare vect", v_projection.toArray(), result_projection, normTolerance);
+		RealVector v_projection_2 = v1.projection(v2_t);
+		double[] result_projection_2 = { 1.662337662337662, 2.0779220779220777, 2.493506493506493 };
+		assertCloseExtracted("compare vect", v_projection_2.toArray(), result_projection_2, normTolerance);
+	}
+}	
