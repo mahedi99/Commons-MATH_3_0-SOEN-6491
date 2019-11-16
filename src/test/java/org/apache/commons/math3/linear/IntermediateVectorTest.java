@@ -127,6 +127,16 @@ public class IntermediateVectorTest {
 
         v_unitize.unitize();
         assertClose("compare vect" ,v_unitVector_2.toArray(),v_unitize.toArray(),normTolerance);
+
+        //Statements from testMisc
+        String out1 = v1.toString();
+        Assert.assertTrue("some output ",  out1.length()!=0);
+        try {
+            v1.checkVectorDimensions(2);
+            Assert.fail("MathIllegalArgumentException expected");
+        } catch (MathIllegalArgumentException ex) {
+            // expected behavior
+        }
     }
 
     /**
@@ -185,21 +195,14 @@ public class IntermediateVectorTest {
         }
     }
 
-    /**
-     * This method contains common statements for {@code testSerial} from both classes
-     * classes {@link ArrayRealVector} and {@link SparseRealVector}
-     *
-     * @param v1 {@link ArrayRealVector} or {@link SparseRealVector} object
-     */
-    public void testMisc(RealVector v1) {
-        String out1 = v1.toString();
-        Assert.assertTrue("some output ",  out1.length()!=0);
-        try {
-            v1.checkVectorDimensions(2);
-            Assert.fail("MathIllegalArgumentException expected");
-        } catch (MathIllegalArgumentException ex) {
-            // expected behavior
-        }
-    }
+//    /**
+//     * This method contains common statements for {@code testSerial} from both classes
+//     * classes {@link ArrayRealVector} and {@link SparseRealVector}
+//     *
+//     * @param v1 {@link ArrayRealVector} or {@link SparseRealVector} object
+//     */
+//    public void testMisc(RealVector v1) {
+//
+//    }
 
 }

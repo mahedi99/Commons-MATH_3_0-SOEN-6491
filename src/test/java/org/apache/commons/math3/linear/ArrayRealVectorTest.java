@@ -949,6 +949,23 @@ public class ArrayRealVectorTest extends IntermediateVectorTest {
         ArrayRealVector  v_ebeDivide = v1.ebeDivide(v2);
         double[] result_ebeDivide = {0.25d, 0.4d, 0.5d};
         assertClose("compare vect" ,v_ebeDivide.toArray(),result_ebeDivide,normTolerance);
+
+        //combining code from testMisc()
+        ArrayRealVector v4 = new ArrayRealVector(vec4);
+        RealVector v4_2 = new ArrayRealVector(vec4);
+        try {
+            v1.checkVectorDimensions(v4);
+            Assert.fail("MathIllegalArgumentException expected");
+        } catch (MathIllegalArgumentException ex) {
+            // expected behavior
+        }
+
+        try {
+            v1.checkVectorDimensions(v4_2);
+            Assert.fail("MathIllegalArgumentException expected");
+        } catch (MathIllegalArgumentException ex) {
+            // expected behavior
+        }
     }
 
 	private void extractedTestBasicFunctions(ArrayRealVector v1, ArrayRealVector v2) {
@@ -974,30 +991,30 @@ public class ArrayRealVectorTest extends IntermediateVectorTest {
         Assert.assertEquals("compare val ",4d, m_outerProduct_3.getEntry(0,0), normTolerance);
 	}
 
-    @Test
-    public void testMisc() {
-        ArrayRealVector v1 = new ArrayRealVector(vec1);
-        ArrayRealVector v4 = new ArrayRealVector(vec4);
-        RealVector v4_2 = new ArrayRealVector(vec4);
-
-        //calling method in super class containing test cases
-        super.testMisc(v1);
-
-       try {
-            v1.checkVectorDimensions(v4);
-            Assert.fail("MathIllegalArgumentException expected");
-        } catch (MathIllegalArgumentException ex) {
-            // expected behavior
-        }
-
-        try {
-            v1.checkVectorDimensions(v4_2);
-            Assert.fail("MathIllegalArgumentException expected");
-        } catch (MathIllegalArgumentException ex) {
-            // expected behavior
-        }
-
-    }
+//    @Test
+//    public void testMisc() {
+//        ArrayRealVector v1 = new ArrayRealVector(vec1);
+//        ArrayRealVector v4 = new ArrayRealVector(vec4);
+//        RealVector v4_2 = new ArrayRealVector(vec4);
+//
+//        //calling method in super class containing test cases
+//        super.testMisc(v1);
+//
+//       try {
+//            v1.checkVectorDimensions(v4);
+//            Assert.fail("MathIllegalArgumentException expected");
+//        } catch (MathIllegalArgumentException ex) {
+//            // expected behavior
+//        }
+//
+//        try {
+//            v1.checkVectorDimensions(v4_2);
+//            Assert.fail("MathIllegalArgumentException expected");
+//        } catch (MathIllegalArgumentException ex) {
+//            // expected behavior
+//        }
+//
+//    }
 
     @Test
     public void testPredicates() {

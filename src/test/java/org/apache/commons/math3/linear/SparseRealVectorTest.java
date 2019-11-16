@@ -794,13 +794,13 @@ public class SparseRealVectorTest extends IntermediateVectorTest{
         super.testOuterProduct(uv);
     }
 
-    @Test
-    public void testMisc() {
-        OpenMapRealVector v1 = new OpenMapRealVector(vec1);
-
-        //calling method in super class containing test cases
-        super.testMisc(v1);
-    }
+//    @Test
+//    public void testMisc() {
+//        OpenMapRealVector v1 = new OpenMapRealVector(vec1);
+//
+//        //calling method in super class containing test cases
+//        super.testMisc(v1);
+//    }
 
     @Test
     public void testPredicates() {
