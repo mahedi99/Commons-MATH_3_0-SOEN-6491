@@ -815,6 +815,7 @@ public class SparseRealVectorTest extends IntermediateVectorTest{
 
         OpenMapRealVector v = new OpenMapRealVector(new double[] { 0, 1, 2 });
 
+        //Calling method in the parent class for common statements
         super.testPredicates(v);
 
         v.setEntry(0, 0);

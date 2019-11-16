@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd6df4f0-880f-46bc-aa1f-12da1bf9fe8f" name="Default Changelist" comment="Restructure testBasicFunctions()">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/ArrayRealVectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/ArrayRealVectorTest.java" afterDir="false" />
+    <list default="true" id="dd6df4f0-880f-46bc-aa1f-12da1bf9fe8f" name="Default Changelist" comment="Restructure testPredicates()">
       <change beforePath="$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/IntermediateVectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/IntermediateVectorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/SparseRealVectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/SparseRealVectorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/ArrayRealVectorTest$RealVectorTestImpl$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/ArrayRealVectorTest$RealVectorTestImpl$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/ArrayRealVectorTest$RealVectorTestImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/ArrayRealVectorTest$RealVectorTestImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/ArrayRealVectorTest$RealVectorTestImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/ArrayRealVectorTest$RealVectorTestImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/ArrayRealVectorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/ArrayRealVectorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/SparseRealVectorTest$SparseRealVectorTestImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/SparseRealVectorTest$SparseRealVectorTestImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/SparseRealVectorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/apache/commons/math3/linear/SparseRealVectorTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +24,8 @@
       <file leaf-file-name="IntermediateVectorTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/IntermediateVectorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="143" column="38" lean-forward="true" selection-start-line="143" selection-start-column="38" selection-end-line="143" selection-end-column="38" />
+            <state relative-caret-position="-2048">
+              <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#906#907#0" expanded="true" />
@@ -40,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArrayRealVectorTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ArrayRealVectorTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/ArrayRealVectorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="1030" lean-forward="true" selection-start-line="1030" selection-end-line="1030" />
+            <state relative-caret-position="6930">
+              <caret line="977" column="22" selection-start-line="977" selection-start-column="16" selection-end-line="977" selection-end-column="22" />
               <folding>
                 <element signature="e#3949#3950#0" expanded="true" />
                 <element signature="e#3989#3990#0" expanded="true" />
@@ -53,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SparseRealVectorTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SparseRealVectorTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/SparseRealVectorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="817" column="32" lean-forward="true" selection-start-line="817" selection-start-column="32" selection-end-line="817" selection-end-column="32" />
+            <state relative-caret-position="213">
+              <caret line="831" lean-forward="true" selection-start-line="831" selection-end-line="831" />
             </state>
           </provider>
         </entry>
@@ -100,8 +95,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/SparseRealVectorTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/IntermediateVectorTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/ArrayRealVectorTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/IntermediateVectorTest.java" />
       </list>
     </option>
   </component>
@@ -384,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573813546225</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Restructure testPredicates()">
+      <created>1573940715476</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1573940715476</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -420,10 +422,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14116000" />
+    <option name="totallyTimeSpent" value="16791000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="bottom" id="TODO" order="11" />
@@ -517,7 +520,8 @@
     <MESSAGE value="move duplicate codes from testSerial() to super class" />
     <MESSAGE value="refactor testOuterProduct() without lambda" />
     <MESSAGE value="Restructure testBasicFunctions()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Restructure testBasicFunctions()" />
+    <MESSAGE value="Restructure testPredicates()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Restructure testPredicates()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -588,10 +592,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/SparseRealVectorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="831" lean-forward="true" selection-start-line="831" selection-end-line="831" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/apache/commons/math3/linear/ArrayRealVector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="53" column="11" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
+        <state relative-caret-position="-10676">
+          <caret line="92" column="23" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
           <folding>
             <element signature="e#2356#2357#0" expanded="true" />
             <element signature="e#2392#2393#0" expanded="true" />
@@ -601,8 +612,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/IntermediateVectorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="143" column="38" lean-forward="true" selection-start-line="143" selection-start-column="38" selection-end-line="143" selection-end-column="38" />
+        <state relative-caret-position="-2048">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#906#907#0" expanded="true" />
@@ -613,19 +624,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/ArrayRealVectorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="1030" lean-forward="true" selection-start-line="1030" selection-end-line="1030" />
+        <state relative-caret-position="6930">
+          <caret line="977" column="22" selection-start-line="977" selection-start-column="16" selection-end-line="977" selection-end-column="22" />
           <folding>
             <element signature="e#3949#3950#0" expanded="true" />
             <element signature="e#3989#3990#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/apache/commons/math3/linear/SparseRealVectorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="817" column="32" lean-forward="true" selection-start-line="817" selection-start-column="32" selection-end-line="817" selection-end-column="32" />
         </state>
       </provider>
     </entry>

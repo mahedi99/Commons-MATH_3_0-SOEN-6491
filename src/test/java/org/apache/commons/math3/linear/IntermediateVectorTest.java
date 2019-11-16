@@ -4,7 +4,6 @@ import org.apache.commons.math3.TestUtils;
 import org.apache.commons.math3.exception.MathArithmeticException;
 import org.apache.commons.math3.util.FastMath;
 import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * @author Mahedi Hassan
@@ -27,6 +26,12 @@ public class IntermediateVectorTest {
     protected double entryTolerance = 10E-16;
     protected double normTolerance = 10E-14;
 
+    /**
+     * This method contains common statements for {@code testSerial} from both classes
+     * classes {@link ArrayRealVector} and {@link SparseRealVector}
+     *
+     * @param
+     */
     public void testBasicFunctions(RealVector v1, RealVector v2, RealVector v5, RealVector v2_t, RealVector v_null,
                                    RealVector v_unitize, RealVector v_projection, RealVector vt2){
         // emacs calc: [-4, 0, 3, 1, -6, 3] A --> 8.4261497731763586307
@@ -123,10 +128,22 @@ public class IntermediateVectorTest {
         assertClose("compare vect" ,v_unitVector_2.toArray(),v_unitize.toArray(),normTolerance);
     }
 
+    /**
+     * This method contains common statements for {@code testSerial} from both classes
+     * classes {@link ArrayRealVector} and {@link SparseRealVector}
+     *
+     * @param v {@link ArrayRealVector} or {@link SparseRealVector} object
+     */
     public void testSerial(RealVector v)  {
         Assert.assertEquals(v,TestUtils.serializeAndRecover(v));
     }
 
+    /**
+     * This method contains common statements for {@code testOuterProduct} from both classes
+     * {@link ArrayRealVector} or {@link SparseRealVector}
+     *
+     * @param uv {@link ArrayRealVector} or {@link SparseRealVector} object
+     */
     public void testOuterProduct (RealMatrix uv){
         final double tol = Math.ulp(1d);
         Assert.assertEquals(4, uv.getEntry(0, 0), tol);
@@ -137,11 +154,13 @@ public class IntermediateVectorTest {
         Assert.assertEquals(6, uv.getEntry(2, 1), tol);
     }
 
+    /**
+     * This method contains test cases for Predicates which are common in both
+     * classes {@link ArrayRealVector} and {@link SparseRealVector}
+     *
+     * @param v {@link ArrayRealVector} or {@link SparseRealVector} object
+     */
     public void testPredicates(RealVector v) {
-
-        double[] dataSet1 = new double[]{0, 1, 2};
-        double[] dataSet2 = new double[]{0, 1, 2 + FastMath.ulp(2)};
-        double[] dateSet3 = new double[]{0, 1, 2, 3};
 
         Assert.assertFalse(v.isNaN());
         v.setEntry(1, Double.NaN);
