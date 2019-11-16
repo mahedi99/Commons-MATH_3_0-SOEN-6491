@@ -2,6 +2,7 @@ package org.apache.commons.math3.linear;
 
 import org.apache.commons.math3.TestUtils;
 import org.apache.commons.math3.exception.MathArithmeticException;
+import org.apache.commons.math3.exception.MathIllegalArgumentException;
 import org.apache.commons.math3.util.FastMath;
 import org.junit.Assert;
 
@@ -181,6 +182,23 @@ public class IntermediateVectorTest {
         }
         for (int i = 0; i < m.length; i++) {
             Assert.assertEquals(msg + " " +  i + " elements differ", m[i],n[i],tolerance);
+        }
+    }
+
+    /**
+     * This method contains common statements for {@code testSerial} from both classes
+     * classes {@link ArrayRealVector} and {@link SparseRealVector}
+     *
+     * @param v1 {@link ArrayRealVector} or {@link SparseRealVector} object
+     */
+    public void testMisc(RealVector v1) {
+        String out1 = v1.toString();
+        Assert.assertTrue("some output ",  out1.length()!=0);
+        try {
+            v1.checkVectorDimensions(2);
+            Assert.fail("MathIllegalArgumentException expected");
+        } catch (MathIllegalArgumentException ex) {
+            // expected behavior
         }
     }
 

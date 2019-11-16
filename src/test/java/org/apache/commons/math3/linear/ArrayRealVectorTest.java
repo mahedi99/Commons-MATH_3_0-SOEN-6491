@@ -980,19 +980,8 @@ public class ArrayRealVectorTest extends IntermediateVectorTest {
         ArrayRealVector v4 = new ArrayRealVector(vec4);
         RealVector v4_2 = new ArrayRealVector(vec4);
 
-        String out1 = v1.toString();
-        Assert.assertTrue("some output ",  out1.length()!=0);
-        /*
-         double[] dout1 = v1.copyOut();
-        Assert.assertEquals("testData len", 3, dout1.length);
-        Assert.assertNotSame("testData not same object ", v1.getDataRef(), dout1);
-         */
-        try {
-            v1.checkVectorDimensions(2);
-            Assert.fail("MathIllegalArgumentException expected");
-        } catch (MathIllegalArgumentException ex) {
-            // expected behavior
-        }
+        //calling method in super class containing test cases
+        super.testMisc(v1);
 
        try {
             v1.checkVectorDimensions(v4);
