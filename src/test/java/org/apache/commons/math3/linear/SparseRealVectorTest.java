@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.apache.commons.math3.linear;
 
 import java.io.Serializable;
@@ -24,9 +25,7 @@ import org.junit.Test;
 
 import org.apache.commons.math3.analysis.UnivariateFunction;
 import org.apache.commons.math3.util.FastMath;
-import org.apache.commons.math3.exception.MathArithmeticException;
 import org.apache.commons.math3.exception.OutOfRangeException;
-import org.apache.commons.math3.linear.ArrayRealVectorTest.RealVectorTestImpl;
 
 /**
  * Test cases for the {@link OpenMapRealVector} class.
@@ -425,13 +424,10 @@ public class SparseRealVectorTest extends IntermediateRealVectorTests {
     @Test
     public void testMisc() {
         super.testMiscExtracted(() -> new OpenMapRealVector(vec1));
-
-
     }
 
     @Test
     public void testPredicates() {
-
         super.testPredicatesExtracted(() -> new OpenMapRealVector(new double[] { 0, 1, 2 }),
 				new OpenMapRealVector(new double[] { 0, 1, 2 }),
 				new OpenMapRealVector(new double[] { 0, 1, 2 + FastMath.ulp(2) }),

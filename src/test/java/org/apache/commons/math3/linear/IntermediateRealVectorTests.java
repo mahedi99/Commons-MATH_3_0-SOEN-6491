@@ -38,7 +38,7 @@ import org.junit.Assert;
  *
  * @version $Id$
  */
-public class IntermediateRealVectorTests {
+public abstract class IntermediateRealVectorTests {
 
 	protected double[] vec1 = {1d, 2d, 3d};
 	protected double[] vec2 = {4d, 5d, 6d};
@@ -53,6 +53,8 @@ public class IntermediateRealVectorTests {
 		super();
 	}
 
+	public abstract void testDataInOut();
+	
 	// method pull up as its type clone 2 resolved
 	protected void testSerialExtracted(Supplier<RealVector> arg0) {
 		RealVector v = arg0.get();
