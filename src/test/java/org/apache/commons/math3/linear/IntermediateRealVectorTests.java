@@ -62,10 +62,13 @@ public abstract class IntermediateRealVectorTests {
 	}
 
 	protected void testOuterProductExtracted(Supplier<RealVector> arg0, Supplier<RealVector> arg1) {
+		
 		final RealVector u = arg0.get();
 		final RealVector v = arg1.get();
+		
 		final RealMatrix uv = u.outerProduct(v);
 		final double tol = Math.ulp(1d);
+		
 		Assert.assertEquals(4, uv.getEntry(0, 0), tol);
 		Assert.assertEquals(-2, uv.getEntry(0, 1), tol);
 		Assert.assertEquals(8, uv.getEntry(1, 0), tol);

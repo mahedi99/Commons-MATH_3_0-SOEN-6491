@@ -657,10 +657,11 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
     @Test
     public void testPredicates() {
     	
-    	super.testPredicatesExtracted(() -> new ArrayRealVector(new double[] { 0, 1, 2 }),
-				new ArrayRealVector(new double[] { 0, 1, 2 }),
-				new ArrayRealVector(new double[] { 0, 1, 2 + FastMath.ulp(2) }),
-				new ArrayRealVector(new double[] { 0, 1, 2, 3 }));
+    	ArrayRealVector v1 = new ArrayRealVector(new double[] { 0, 1, 2 });
+    	ArrayRealVector v2 = new ArrayRealVector(new double[] { 0, 1, 2 + FastMath.ulp(2) });
+    	ArrayRealVector v3 = new ArrayRealVector(new double[] { 0, 1, 2, 3 });
+    	
+    	super.testPredicatesExtracted(() -> new ArrayRealVector(new double[] {0, 1, 2 }), v1, v2, v3);
 
     }
 
@@ -764,8 +765,9 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
 
     @Test
     public void testOuterProduct() {
-        super.testOuterProductExtracted(() -> new ArrayRealVector(new double[] { 1, 2, -3 }),
-				() -> new ArrayRealVector(new double[] { 4, -2 }));
+        
+    	super.testOuterProductExtracted(() -> new ArrayRealVector(new double[] { 1, 2, -3 }),
+				                        () -> new ArrayRealVector(new double[] { 4, -2 }));
     }
 
     @Test(expected=DimensionMismatchException.class)

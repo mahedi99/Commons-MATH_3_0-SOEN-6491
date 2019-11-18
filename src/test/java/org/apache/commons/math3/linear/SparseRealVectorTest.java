@@ -428,10 +428,12 @@ public class SparseRealVectorTest extends IntermediateRealVectorTests {
 
     @Test
     public void testPredicates() {
-        super.testPredicatesExtracted(() -> new OpenMapRealVector(new double[] { 0, 1, 2 }),
-				new OpenMapRealVector(new double[] { 0, 1, 2 }),
-				new OpenMapRealVector(new double[] { 0, 1, 2 + FastMath.ulp(2) }),
-				new OpenMapRealVector(new double[] { 0, 1, 2, 3 }));
+    	
+    	OpenMapRealVector v1 = new OpenMapRealVector(new double[] { 0, 1, 2 });
+    	OpenMapRealVector v2 = new OpenMapRealVector(new double[] { 0, 1, 2 + FastMath.ulp(2)});
+    	OpenMapRealVector v3 = new OpenMapRealVector(new OpenMapRealVector(new double[] { 0, 1, 2, 3 }));
+    	
+        super.testPredicatesExtracted(() -> new OpenMapRealVector(new double[] { 0, 1, 2 }), v1, v2, v3);
 
     }
 
