@@ -99,8 +99,8 @@ public abstract class IntermediateRealVectorTests {
 	}
 	
 
-	protected void testPredicatesExtracted(Supplier<RealVector> arg0, RealVector arg1, RealVector arg2,
-			RealVector arg3) {
+	protected void testPredicatesExtracted(Supplier<RealVector> arg0, ArrayList<RealVector> vectors) {
+		
 		RealVector v = arg0.get();
 		Assert.assertFalse(v.isNaN());
 		v.setEntry(1, Double.NaN);
@@ -111,9 +111,9 @@ public abstract class IntermediateRealVectorTests {
 		v.setEntry(1, 1);
 		Assert.assertTrue(v.isInfinite());
 		v.setEntry(0, 0);
-		Assert.assertEquals(v, arg1);
-		Assert.assertNotSame(v, arg2);
-		Assert.assertNotSame(v, arg3);
+		Assert.assertEquals(v, vectors.get(0));// v1 is used here
+		Assert.assertNotSame(v, vectors.get(1)); // v2 is used here
+		Assert.assertNotSame(v, vectors.get(2)); // v3 is used here
 	}
 	
 	protected void testMapFunctionsExtracted(ArrayList<RealVector> vector) {

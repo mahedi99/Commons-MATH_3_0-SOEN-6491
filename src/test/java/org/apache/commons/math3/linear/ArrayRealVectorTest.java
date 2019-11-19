@@ -629,7 +629,6 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
     @Test
     public void testMisc() {
     	super.testMiscExtracted(() -> new ArrayRealVector(vec1));
-
     }
     
     // this is a seperate testcase for the vector4th an extention to testMisc
@@ -657,11 +656,13 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
     @Test
     public void testPredicates() {
     	
-    	ArrayRealVector v1 = new ArrayRealVector(new double[] { 0, 1, 2 });
-    	ArrayRealVector v2 = new ArrayRealVector(new double[] { 0, 1, 2 + FastMath.ulp(2) });
-    	ArrayRealVector v3 = new ArrayRealVector(new double[] { 0, 1, 2, 3 });
+    	ArrayList<RealVector> ArrayRealvectors = new ArrayList<RealVector>();
+    	
+    	ArrayRealvectors.add(new ArrayRealVector(new double[] { 0, 1, 2 })); // v1
+    	ArrayRealvectors.add(new ArrayRealVector(new double[] { 0, 1, 2 + FastMath.ulp(2) })); // v2
+    	ArrayRealvectors.add(new ArrayRealVector(new double[] { 0, 1, 2, 3 })); // v3
 
-    	super.testPredicatesExtracted(() -> new ArrayRealVector(new double[] {0, 1, 2 }), v1, v2, v3);
+    	super.testPredicatesExtracted(() -> new ArrayRealVector(new double[] {0, 1, 2 }),ArrayRealvectors);
     }
 
     @Test
