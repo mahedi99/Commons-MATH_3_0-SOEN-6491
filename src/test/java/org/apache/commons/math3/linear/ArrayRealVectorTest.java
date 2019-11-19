@@ -612,12 +612,12 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
 		
 		RealVector  v_ebeMultiply_3 = v1.ebeMultiply(v2);
         double[] result_ebeMultiply_3 = {4d, 10d, 18d};
-        assertClose("compare vect" ,v_ebeMultiply_3.toArray(),result_ebeMultiply_3,normTolerance);
+        super.assertCloseExtracted("compare vect" ,v_ebeMultiply_3.toArray(),result_ebeMultiply_3,normTolerance);
 
 
         RealVector  v_ebeDivide_3 = v1.ebeDivide(v2);
         double[] result_ebeDivide_3 = {0.25d, 0.4d, 0.5d};
-        assertClose("compare vect" ,v_ebeDivide_3.toArray(),result_ebeDivide_3,normTolerance);
+        super.assertCloseExtracted("compare vect" ,v_ebeDivide_3.toArray(),result_ebeDivide_3,normTolerance);
 		
 		
 		RealMatrix m_outerProduct_3 = v1.outerProduct(v2);
@@ -660,9 +660,8 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
     	ArrayRealVector v1 = new ArrayRealVector(new double[] { 0, 1, 2 });
     	ArrayRealVector v2 = new ArrayRealVector(new double[] { 0, 1, 2 + FastMath.ulp(2) });
     	ArrayRealVector v3 = new ArrayRealVector(new double[] { 0, 1, 2, 3 });
-    	
-    	super.testPredicatesExtracted(() -> new ArrayRealVector(new double[] {0, 1, 2 }), v1, v2, v3);
 
+    	super.testPredicatesExtracted(() -> new ArrayRealVector(new double[] {0, 1, 2 }), v1, v2, v3);
     }
 
     @Test
@@ -953,9 +952,5 @@ public class ArrayRealVectorTest  extends IntermediateRealVectorTests {
         }
     }
 
-    /** verifies that two vectors are close (sup norm) */
-    protected void assertClose(String msg, double[] m, double[] n,
-            double tolerance) {
-    	super.assertCloseExtracted(msg, m, n, tolerance);
-    }
+  
 }
