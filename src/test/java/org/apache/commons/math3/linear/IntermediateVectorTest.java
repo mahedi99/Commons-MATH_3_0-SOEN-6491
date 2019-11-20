@@ -140,9 +140,7 @@ public class IntermediateVectorTest {
         }
     }
 
-
     public void testMapFunctions(RealVector v1, RealVector vat, RealVector abs_v, RealVector cbrt_v, RealVector ceil_v) {
-
         //octave =  v1 .+ 2.0
         RealVector v_mapAdd = v1.mapAdd(2.0d);
         double[] result_mapAdd = {3d, 4d, 5d};
@@ -522,15 +520,4 @@ public class IntermediateVectorTest {
             Assert.assertEquals(msg + " " +  i + " elements differ", m[i],n[i],tolerance);
         }
     }
-
-//    /**
-//     * This method contains common statements for {@code testSerial} from both classes
-//     * classes {@link ArrayRealVector} and {@link SparseRealVector}
-//     *
-//     * @param v1 {@link ArrayRealVector} or {@link SparseRealVector} object
-//     */
-//    public void testMisc(RealVector v1) {
-//
-//    }
-
 }

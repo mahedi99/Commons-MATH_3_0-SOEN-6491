@@ -401,7 +401,7 @@ public class SparseRealVectorTest extends IntermediateVectorTest{
     }
 
     @Test
-    public void testBasicFunctions() {
+    public void testFunctions() {
         OpenMapRealVector v1 = new OpenMapRealVector(vec1);
         OpenMapRealVector v2 = new OpenMapRealVector(vec2);
         OpenMapRealVector v5 = new OpenMapRealVector(vec5);
@@ -464,7 +464,6 @@ public class SparseRealVectorTest extends IntermediateVectorTest{
         double[] ceil_a = {-1.1d, 0.9d, 1.1d};
         OpenMapRealVector ceil_v = new OpenMapRealVector(ceil_a);
         super.testMapFunctions(v1, vat, abs_v, cbrt_v, ceil_v);
-
     }
 
     @Test
@@ -476,14 +475,6 @@ public class SparseRealVectorTest extends IntermediateVectorTest{
 
         super.testOuterProduct(uv);
     }
-
-//    @Test
-//    public void testMisc() {
-//        OpenMapRealVector v1 = new OpenMapRealVector(vec1);
-//
-//        //calling method in super class containing test cases
-//        super.testMisc(v1);
-//    }
 
     @Test
     public void testPredicates() {

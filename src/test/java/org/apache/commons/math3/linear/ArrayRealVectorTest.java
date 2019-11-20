@@ -583,7 +583,7 @@ public class ArrayRealVectorTest extends IntermediateVectorTest {
     }
 
     @Test
-    public void testBasicFunctions() {
+    public void testFunctions() {
         ArrayRealVector v1 = new ArrayRealVector(vec1);
         ArrayRealVector v2 = new ArrayRealVector(vec2);
         ArrayRealVector v5 = new ArrayRealVector(vec5);
@@ -596,31 +596,23 @@ public class ArrayRealVectorTest extends IntermediateVectorTest {
 
         ArrayRealVectorTest.RealVectorTestImpl vt2 = new ArrayRealVectorTest.RealVectorTestImpl(vec2);
 
-        //duplicate statements
+        //Calling testBasicFunctions() by using some common objects from testFunctions()
         super.testBasicFunctions(v1, v2, v5, v2_t, v_null, v_unitize, v_projection, vt2);
 
-        //Unmapped statements
+        //Unmapped statements for testBasicFunctions()
         extractedTestBasicFunctions(v1, v2);
 
-        //octave =  v1 + v2
-        ArrayRealVector v_add = v1.add(v2);
-        double[] result_add = {5d, 7d, 9d};
-        assertClose("compare vect" ,v_add.toArray(), result_add, normTolerance);
 
-        //octave =  v1 - v2
-        ArrayRealVector v_subtract = v1.subtract(v2);
-        double[] result_subtract = {-3d, -3d, -3d};
-        assertClose("compare vect" ,v_subtract.toArray(),result_subtract,normTolerance);
-
-         //octave v1 .* v2
-        ArrayRealVector  v_ebeMultiply = v1.ebeMultiply(v2);
-        double[] result_ebeMultiply = {4d, 10d, 18d};
-        assertClose("compare vect" ,v_ebeMultiply.toArray(),result_ebeMultiply,normTolerance);
-
-//         octave v1 ./ v2
-        ArrayRealVector  v_ebeDivide = v1.ebeDivide(v2);
-        double[] result_ebeDivide = {0.25d, 0.4d, 0.5d};
-        assertClose("compare vect" ,v_ebeDivide.toArray(),result_ebeDivide,normTolerance);
+        //Calling testMapFunctions() by using some common objects from testFunctions()
+        double[] vat_a = {0d, 0.5d, 1.0d};
+        ArrayRealVector vat = new ArrayRealVector(vat_a);
+        double[] abs_a = {-1.0d, 0.0d, 1.0d};
+        ArrayRealVector abs_v = new ArrayRealVector(abs_a);
+        double[] cbrt_a = {-2.0d, 0.0d, 2.0d};
+        ArrayRealVector cbrt_v = new ArrayRealVector(cbrt_a);
+        double[] ceil_a = {-1.1d, 0.9d, 1.1d};
+        ArrayRealVector ceil_v = new ArrayRealVector(ceil_a);
+        super.testMapFunctions(v1, vat, abs_v, cbrt_v, ceil_v);
 
         //combining code from testMisc()
         ArrayRealVector v4 = new ArrayRealVector(vec4);
@@ -638,23 +630,32 @@ public class ArrayRealVectorTest extends IntermediateVectorTest {
         } catch (MathIllegalArgumentException ex) {
             // expected behavior
         }
-
-
-        //Calling testMapFunctions() by using some common objects from testBasicFunctions()
-        double[] vat_a = {0d, 0.5d, 1.0d};
-        ArrayRealVector vat = new ArrayRealVector(vat_a);
-        double[] abs_a = {-1.0d, 0.0d, 1.0d};
-        ArrayRealVector abs_v = new ArrayRealVector(abs_a);
-        double[] cbrt_a = {-2.0d, 0.0d, 2.0d};
-        ArrayRealVector cbrt_v = new ArrayRealVector(cbrt_a);
-        double[] ceil_a = {-1.1d, 0.9d, 1.1d};
-        ArrayRealVector ceil_v = new ArrayRealVector(ceil_a);
-        super.testMapFunctions(v1, vat, abs_v, cbrt_v, ceil_v);
     }
 
     //
 
 	private void extractedTestBasicFunctions(ArrayRealVector v1, ArrayRealVector v2) {
+
+        //octave =  v1 + v2
+        ArrayRealVector v_add = v1.add(v2);
+        double[] result_add = {5d, 7d, 9d};
+        assertClose("compare vect" ,v_add.toArray(), result_add, normTolerance);
+
+        //octave =  v1 - v2
+        ArrayRealVector v_subtract = v1.subtract(v2);
+        double[] result_subtract = {-3d, -3d, -3d};
+        assertClose("compare vect" ,v_subtract.toArray(),result_subtract,normTolerance);
+
+        //octave v1 .* v2
+        ArrayRealVector  v_ebeMultiply = v1.ebeMultiply(v2);
+        double[] result_ebeMultiply = {4d, 10d, 18d};
+        assertClose("compare vect" ,v_ebeMultiply.toArray(),result_ebeMultiply,normTolerance);
+
+//         octave v1 ./ v2
+        ArrayRealVector  v_ebeDivide = v1.ebeDivide(v2);
+        double[] result_ebeDivide = {0.25d, 0.4d, 0.5d};
+        assertClose("compare vect" ,v_ebeDivide.toArray(),result_ebeDivide,normTolerance);
+
 		//octave =  sqrt(sumsq(v1-v2))
         double dist_3 = v1.getDistance(v2);
         Assert.assertEquals("compare values  ", v1.subtract(v2).getNorm(),dist_3, normTolerance);
@@ -676,31 +677,6 @@ public class ArrayRealVectorTest extends IntermediateVectorTest {
         RealMatrix m_outerProduct_3 = v1.outerProduct(v2);
         Assert.assertEquals("compare val ",4d, m_outerProduct_3.getEntry(0,0), normTolerance);
 	}
-
-//    @Test
-//    public void testMisc() {
-//        ArrayRealVector v1 = new ArrayRealVector(vec1);
-//        ArrayRealVector v4 = new ArrayRealVector(vec4);
-//        RealVector v4_2 = new ArrayRealVector(vec4);
-//
-//        //calling method in super class containing test cases
-//        super.testMisc(v1);
-//
-//       try {
-//            v1.checkVectorDimensions(v4);
-//            Assert.fail("MathIllegalArgumentException expected");
-//        } catch (MathIllegalArgumentException ex) {
-//            // expected behavior
-//        }
-//
-//        try {
-//            v1.checkVectorDimensions(v4_2);
-//            Assert.fail("MathIllegalArgumentException expected");
-//        } catch (MathIllegalArgumentException ex) {
-//            // expected behavior
-//        }
-//
-//    }
 
     @Test
     public void testPredicates() {
